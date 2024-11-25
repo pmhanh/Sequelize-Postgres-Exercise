@@ -1,3 +1,4 @@
+require('pg'); // Ensures pg is bundled
 const express = require("express");
 const app = express();
 const port = 3000;
