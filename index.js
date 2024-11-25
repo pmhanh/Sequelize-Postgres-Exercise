@@ -1,4 +1,25 @@
-require('pg'); // Ensures pg is bundled
+require('dotenv').config(); // Load environment variables
+const { Sequelize } = require('sequelize');
+
+// Initialize Sequelize
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'postgres',
+    dialectModule: pg,
+    logging: false,
+  }
+);
+
+sequelize.authenticate()
+  .then(() => console.log('Database connected successfully.'))
+  .catch((err) => console.error('Unable to connect to the database:', err));
+
+
 const express = require("express");
 const app = express();
 const port = 3000;
