@@ -1,16 +1,17 @@
 const { Sequelize } = require('sequelize');
+const pg = require('pg'); // Ensure 'pg' is required if needed
 
-// Initialize Sequelize
+// Hardcoding database credentials for demonstration
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  'sequelize_exercise',    // DB Name
+  'postgres',        // DB User
+  '12345678',    // DB Password
   {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'postgres',
-    dialectModule: require('pg'),
-    logging: false,
+    host: '127.0.0.1',   // DB Host (localhost or your actual host)
+    port: 5432,          // DB Port (default PostgreSQL port)
+    dialect: 'postgres', // Dialect (PostgreSQL)
+    dialectModule: pg,   // Using pg module for PostgreSQL
+    logging: false,      // Optional: Disable SQL query logging
   }
 );
 
