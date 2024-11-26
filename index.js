@@ -30,7 +30,7 @@ app.engine(
       },
   }),
 );
-app.set("view engine", "hbs");
+app.set("views engine", "hbs");
 
 app.get("/", (req, res) => res.redirect("/blogs")  )
   
